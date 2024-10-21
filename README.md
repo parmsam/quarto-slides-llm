@@ -1,6 +1,6 @@
 # quarto-clipper-llm-app
 
-This is a Shiny for Python app that uses Beautiful Soup to scrap a webpage (from a URL) then the OpenAI API to generate a Quarto document. It can also read PDF file text. You can choose from a variety of Quarto document types including an HTML document, PDF, RevealJS slides, flashcards, quiz questions, and webR code chunks. 
+This is a Shiny for Python app that uses the OpenAI API to generate RevealJS presentation based in a Quarto document. Enter the outline for your slides and your OpenAI API key to get started. This app is based on the [Quarto Clipper](https://github.com/parmsam/quarto-clipper-llm-app) app I made before.
 
 It will summarize the webpage text and generate flashcards or quiz questions in your Quarto file, if you pick those output type options.
 
@@ -16,12 +16,9 @@ You can clone this repo and run the app locally or access the app via [Connect C
 
 ## Dependencies
 
-After downloading the Quarto file you generate, if you want to render out the flashcards or quiz file using Quarto, you'll need the [quarto-flashcards](https://github.com/parmsam/quarto-flashcards/), [quarto-quiz](https://github.com/parmsam/quarto-quiz), 
-[quarto-live](https://github.com/r-wasm/quarto-live), or other extension in your Quarto project. 
-
+You will need [Quarto](https://quarto.org/) to render the document 
+into a RevealJS presentation.
 
 ## Adding templates for more output types
 
-If you want to add more output types, you can specify more templates in the quarto_templates dictionary object in the `app.py` file. 
-
-You can also expand the types of files that the app can read from URLs by adding more URL `endswith` condition logic within the server code in `app.py`.
+If you want to add more output types, you can specify more templates in the quarto_templates dictionary object in the `app.py` file.
