@@ -1,8 +1,6 @@
-# quarto-clipper-llm-app
+# quarto-slides-llm-app
 
-This is a Shiny for Python app that uses the OpenAI API to generate RevealJS presentation based in a Quarto document. Enter the outline for your slides and your OpenAI API key to get started. This app is based on the [Quarto Clipper](https://github.com/parmsam/quarto-clipper-llm-app) app I made before.
-
-It will summarize the webpage text and generate flashcards or quiz questions in your Quarto file, if you pick those output type options.
+This is a Shiny for Python app that uses the OpenAI API to generate RevealJS presentation slides in a Quarto document. Enter the outline for your slides and your OpenAI API key to get started. This app is based on the [Quarto Clipper](https://github.com/parmsam/quarto-clipper-llm-app) project I worked on before.
 
 Note that the output Quarto document may not be perfect and may require some manual editing to fix formatting or syntax issues.
 
