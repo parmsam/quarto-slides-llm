@@ -59,6 +59,11 @@ app_ui = ui.page_fluid(
                 choices = model_options, 
                 selected = "gpt-4o-mini"
             ),
+            ui.input_text("topic", "Enter the presentation topic:"),
+            ui.input_text_area("purpose", "Enter the presentation purpose:"),
+            ui.input_numeric("n_slides", "Enter the number of slides:", 
+                value = 10
+            ),
             ui.input_text_area("outline", "Enter your outline for your slides:"),
             ui.input_select(
                 id = "selected_template", 
@@ -66,6 +71,7 @@ app_ui = ui.page_fluid(
                 choices = list(quarto_templates.keys()),
                 selected = "Quarto slides"
             ),
+   
             ui.input_action_button("convert", "Convert to Quarto"),
             open="always",
         ),
@@ -97,6 +103,9 @@ def server(input, output, session):
         
         template = quarto_templates[input.selected_template()]
         template_type = input.selected_template()
+        topic = input.topic()
+        purpose = input.purpose()
+        n_slides = input.n_slides()
         outline = input.outline()
 
         llm_prompt.set([
@@ -116,8 +125,14 @@ def server(input, output, session):
             - Ensure you're adhering to the provided Quarto template structure and formatting guidelines.
             - Ensure you dont start and end the file with the typical three markdown 
             backquotes (```) as it is not needed for Quarto.
+            - Here's the topic for the presentation: {topic}
+            - Here's the purpose of the presentation: {purpose}
+            - It should only be {n_slides} slides long.
+            - Generate an outline of your own as a basis for the slides if I don't provide one.
             - Here is a presentation outline for you to use as a basis for the slides: 
-            {outline}"""}
+            {outline}. 
+            """
+            }
         ])
 
         try:
